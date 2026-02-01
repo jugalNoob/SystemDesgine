@@ -1,0 +1,207 @@
+1️⃣ Identify Entities (Tables in RDBMS)
+
+In a food delivery system, main entities are:
+
+Users (Customers)
+
+Restaurants
+
+Menu Items (Food)
+
+Orders
+
+Delivery Agents
+
+Reviews (optional)
+
+2️⃣ MongoDB Collections Design
+
+MongoDB is NoSQL, so relations are usually embedded or referenced. Here's a clean approach:
+
+a) Users Collection
+{
+  "_id": ObjectId("..."),
+  "name": "Jugal Sharma",
+  "email": "jugal@example.com",
+  "password": "hashed_password",
+  "phone": "1234567890",
+  "address": {
+    "street": "123 ABC Road",
+    "city": "Delhi",
+    "zip": "110001"
+  },
+  "orders": [ ObjectId("order_id1"), ObjectId("order_id2") ]  // optional referencing
+}
+
+b) Restaurants Collection
+{
+  "_id": ObjectId("..."),
+  "name": "Tasty Pizza",
+  "location": {
+    "street": "456 XYZ Street",
+    "city": "Delhi",
+    "zip": "110002"
+  },
+  "phone": "0987654321",
+  "menu": [ ObjectId("menuItem1"), ObjectId("menuItem2") ], // referencing menu items
+  "rating": 4.5
+}
+
+c) MenuItems Collection
+{
+  "_id": ObjectId("..."),
+  "restaurant_id": ObjectId("restaurant_id"), // reference
+  "name": "Margherita Pizza",
+  "description": "Cheese & Tomato",
+  "price": 250,
+  "category": "Pizza",
+  "is_available": true
+}
+
+
+Alternative: You can embed menu items inside Restaurants if menu is small and read-heavy.
+
+d) Orders Collection
+{
+  "_id": ObjectId("..."),
+  "user_id": ObjectId("user_id"),
+  "restaurant_id": ObjectId("restaurant_id"),
+  "items": [
+    { "menu_item_id": ObjectId("menuItem1"), "quantity": 2, "price": 250 }
+  ],
+  "total_price": 500,
+  "status": "Pending", // Pending, Accepted, Preparing, Delivered
+  "delivery_agent_id": ObjectId("agent_id"),
+  "order_time": ISODate("2025-10-23T13:00:00Z"),
+  "delivery_address": {
+    "street": "123 ABC Road",
+    "city": "Delhi",
+    "zip": "110001"
+  }
+}
+
+e) Delivery Agents Collection
+{
+  "_id": ObjectId("..."),
+  "name": "Ravi Kumar",
+  "phone": "9876543210",
+  "vehicle": "Bike",
+  "status": "Available" // Available, Delivering
+}
+
+f) Reviews Collection (Optional)
+{
+  "_id": ObjectId("..."),
+  "user_id": ObjectId("user_id"),
+  "restaurant_id": ObjectId("restaurant_id"),
+  "rating": 5,
+  "comment": "Great pizza!",
+  "review_date": ISODate("2025-10-23T14:00:00Z")
+}
+
+3️⃣ Relationships
+
+| Relation                | MongoDB Approach                               |
+| ----------------------- | ---------------------------------------------- |
+| User → Orders           | Reference `user_id` in Orders                  |
+| Restaurant → Menu Items | Embed or Reference `menuItem_id`               |
+| Order → Menu Items      | Reference `menu_item_id` with quantity & price |
+| Order → Delivery Agent  | Reference `delivery_agent_id`                  |
+| User → Reviews          | Reference `user_id`                            |
+| Restaurant → Reviews    | Reference `restaurant_id`                      |
+
+
+4️⃣ Example Queries
+
+Get all orders of a user
+
+db.orders.find({ user_id: ObjectId("user_id") })
+
+
+Get menu items for a restaurant
+
+db.menuItems.find({ restaurant_id: ObjectId("restaurant_id") })
+
+
+Get all available delivery agents
+
+db.deliveryAgents.find({ status: "Available" })
+
+
+Aggregate order with menu items
+
+db.orders.aggregate([
+  { $match: { _id: ObjectId("order_id") } },
+  { $lookup: {
+      from: "menuItems",
+      localField: "items.menu_item_id",
+      foreignField: "_id",
+      as: "order_items"
+  }}
+])
+
+
+✅ This design balances relational concepts with MongoDB flexibility, using references for relationships and embedding where read-heavy data is common.
+
+
++----------------+           +----------------+           +----------------+
+|     Users      |           |  Restaurants   |           | DeliveryAgents |
++----------------+           +----------------+           +----------------+
+| _id            |<---+      | _id            |           | _id            |
+| name           |    |      | name           |           | name           |
+| email          |    |      | location       |           | phone          |
+| phone          |    |      | phone          |           | vehicle        |
+| address        |    |      | rating         |           | status         |
++----------------+    |      +----------------+           +----------------+
+       |              |               |
+       |              |               |
+       |              |               |
+       |              |               |
+       |         +----v----------------+           
+       |         |    MenuItems        |           
+       |         +--------------------+           
+       |         | _id                |           
+       +-------->| restaurant_id      |           
+                 | name               |           
+                 | description        |           
+                 | price              |           
+                 | category           |           
+                 | is_available       |           
+                 +--------------------+           
+
+                 +--------------------+
+                 |      Orders        |
+                 +--------------------+
+                 | _id                |
+                 | user_id   ---------+
+                 | restaurant_id -----+
+                 | delivery_agent_id -+
+                 | items              |
+                 | total_price        |
+                 | status             |
+                 | order_time         |
+                 | delivery_address   |
+                 +--------------------+
+                        |
+                        |
+                 +------v------+
+                 |   Reviews   |
+                 +-------------+
+                 | _id         |
+                 | user_id ----+
+                 | restaurant_id -+
+                 | rating      |
+                 | comment     |
+                 | review_date |
+                 +-------------+
+✅ Explanation
+
+Users → Orders: via user_id
+
+Orders → Restaurants: via restaurant_id
+
+Orders → DeliveryAgents: via delivery_agent_id
+
+Restaurants → MenuItems: via restaurant_id
+
+Users & Restaurants → Reviews: via user_id and restaurant_id

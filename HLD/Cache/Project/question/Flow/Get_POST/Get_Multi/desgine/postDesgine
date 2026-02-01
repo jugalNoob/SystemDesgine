@@ -1,0 +1,53 @@
+Client
+  │
+  │  POST /student
+  ▼
+API Controller
+  │
+  │ 1. Validate input
+  │
+  │ 2. Save to MongoDB
+  ▼
+MongoDB
+  │
+  │ 3. Success
+  ▼
+Redis
+  │
+  │ 4. INCR students:version
+  │     (e.g. 5 → 6)
+  ▼
+Response → Client
+
+
+
+
+Client
+  │
+  │  GET /students
+  ▼
+API Controller
+  │
+  │ 1. GET students:version
+  │     (e.g. version = 6)
+  │
+  │ 2. Build cache key
+  │     students:list:v6:page:1
+  │
+  ▼
+Redis
+  │
+  │ 3. Cache HIT?
+  │     ├─ YES → return data ✅
+  │     └─ NO
+  ▼
+MongoDB
+  │
+  │ 4. Fetch users
+  ▼
+Redis
+  │
+  │ 5. SET students:list:v6:page:1
+  │     (TTL = 60s)
+  ▼
+Response → Client

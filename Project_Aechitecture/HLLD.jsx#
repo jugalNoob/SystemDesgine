@@ -1,0 +1,136 @@
+Expanded High-Level Design (HLD) Cheat Sheet (50+ Topics)
+1. System Architecture Basics
+
+Monolithic Architecture
+
+Layered Architecture (Presentation, Business, Data)
+
+Microservices Architecture
+
+Serverless Architecture
+
+Event-Driven Architecture
+
+2. Scalability & Availability
+
+Horizontal vs Vertical Scaling
+
+Load Balancers (Round-Robin, Least Connections)
+
+Auto-scaling
+
+High Availability (Active-Active, Active-Passive)
+
+Disaster Recovery (DR Sites, Backups)
+
+3. Data Management
+
+Relational Database Design (ER Diagrams, Normalization)
+
+NoSQL Database Design (Document, Key-Value, Column, Graph)
+
+Database Sharding & Partitioning
+
+Database Replication (Master-Slave, Master-Master)
+
+Eventual Consistency vs Strong Consistency
+
+Caching Strategies (Redis, Memcached)
+
+4. API & Communication Patterns
+
+RESTful APIs
+
+GraphQL APIs
+
+gRPC / RPC
+
+Message Queues (Kafka, RabbitMQ)
+
+Pub/Sub Pattern
+
+WebSockets & SSE
+
+API Gateway Patterns
+
+5. Performance Optimization
+
+Content Delivery Networks (CDN)
+
+Caching layers & TTL
+
+Query Optimization & Indexing
+
+Batch Processing
+
+Lazy Loading / Pre-Fetching
+
+6. Reliability & Fault Tolerance
+
+Circuit Breaker Pattern
+
+Bulkhead Pattern
+
+Retry Strategies (Exponential Backoff)
+
+Failover Strategies
+
+Health Checks & Heartbeats
+
+7. Security & Compliance
+
+Authentication & Authorization (OAuth2, JWT)
+
+Encryption (At Rest, In Transit)
+
+Rate Limiting & Throttling
+
+Input Validation & Sanitization
+
+Secure Data Storage (Passwords, Sensitive Info)
+
+GDPR / HIPAA Compliance
+
+8. Monitoring & Observability
+
+Logging & Log Aggregation
+
+Metrics Collection & Dashboards
+
+Distributed Tracing (Jaeger, OpenTelemetry)
+
+Alerting & Notifications
+
+Audit Trails
+
+9. Distributed Systems Concepts
+
+CAP Theorem (Consistency, Availability, Partition Tolerance)
+
+Consensus Algorithms (Paxos, Raft)
+
+Leader Election
+
+Distributed Locks & Coordination
+
+Data Replication & Eventual Consistency
+
+10. Advanced Patterns & Architecture
+
+CQRS (Command Query Responsibility Segregation)
+
+Event Sourcing
+
+Saga Pattern for Distributed Transactions
+
+Feature Toggles / Canary Deployments
+
+Multi-Tenancy Design
+
+API Composition vs Aggregation
+
+This HLD cheat sheet now covers core high-level system design topics, advanced distributed system patterns, microservices, observability, security, and performance strategies—perfect for interview prep and real-world architectural planning.
+
+If you want, I can make a combined LLD + HLD Master Mind Map showing all 100+ topics in a single visual diagram for ultimate revision and quick recall.
+
+Do you want me to create that next?
