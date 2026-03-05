@@ -35,6 +35,8 @@ Atomic updates
 Array grows unbounded (comments, logs)
 
 2️⃣ Referenced Pattern
+
+
 ✅ Use when
 
 Large datasets
@@ -158,7 +160,12 @@ Shared collection
 
 Clean role separation
 
+
+
+
 6️⃣ Bucket Pattern (Very Important 🔥)
+
+
 ✅ Use when
 
 Logs

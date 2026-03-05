@@ -143,4 +143,5 @@ Use SCAN instead for safe iteration.
 
 🧠 One-Line Interview Summary
 
-“Redis is a high-performance in-memory store used as a caching layer to reduce database load and latency.”
+“Redis is a high-performance in-memory store used as a caching layer to reduce 
+database load and latency.”

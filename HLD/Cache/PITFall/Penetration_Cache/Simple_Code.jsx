@@ -46,6 +46,7 @@ const Register = require("../model/student");
 const router = express.Router();
 
 router.get("/student/:id", async (req, res) => {
+  
   const id = req.params.id;
   const cacheKey = `student:${id}`;
 

@@ -1,0 +1,1 @@
+If you want, I can make a single infographic showing all 8 concepts: Fault-Tolerance, Scalability, Availability, Reliability, Observability, Failover, Flexibility, Reusability with examples, which is interview-ready and easy to explain.

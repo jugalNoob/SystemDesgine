@@ -1,7 +1,8 @@
 🔹 Cache Penetration – Simple Explanation
 🧠 What is it?
 
-Cache Penetration happens when requests ask for data that doesn’t exist in cache or database.
+Cache Penetration happens when requests ask for data that doesn’t
+ exist in cache or database.
 
 Cache misses every time
 
@@ -11,7 +12,8 @@ Can overload DB → potential downtime
 
 Think:
 
-“User requests a fake product ID → cache miss → DB queried → repeated fake requests overload DB.”
+“User requests a fake product ID → cache miss → DB 
+queried → repeated fake requests overload DB.”
 
 ⚠️ Why is it important?
 
