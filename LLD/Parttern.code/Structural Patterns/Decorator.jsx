@@ -3,9 +3,11 @@
 🔹 What is Decorator Pattern?
 
 Definition:
-Decorator is a Structural Design Pattern that adds new behavior to objects dynamically without altering the original class.
+Decorator is a Structural Design Pattern that adds
+ new behavior to objects dynamically without altering the original class.
 
-Unlike inheritance, it wraps the object and enhances functionality at runtime.
+Unlike inheritance, it wraps the object and enhances
+ functionality at runtime.
 
 Useful for optional features or add-ons.
 

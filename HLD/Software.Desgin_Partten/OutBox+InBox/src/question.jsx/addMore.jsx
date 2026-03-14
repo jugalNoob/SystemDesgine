@@ -1,0 +1,1 @@
+🔥 Idempotency Key Design🔥What happens during crash Next Level (If You Want Advanced) You can now add: ✅ Separate DLQ Worker ✅ DLQ monitoring dashboard ✅ Auto-retry from DLQ ✅ Metrics with Prometheus ✅ Distributed tracing ✅ Graceful shutdown handling

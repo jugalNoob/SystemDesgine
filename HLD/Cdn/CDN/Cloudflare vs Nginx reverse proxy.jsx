@@ -10,7 +10,8 @@ Nginx
 🎯 1️⃣ Simple Definition
 🔵 Cloudflare
 
-A global CDN + security + edge network service that sits in front of your server.
+A global CDN + security + edge network service 
+that sits in front of your server.
 
 🟢 Nginx Reverse Proxy
 

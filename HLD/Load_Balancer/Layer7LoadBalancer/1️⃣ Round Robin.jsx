@@ -1,21 +1,58 @@
-🔹 1️⃣ Round Robin
+Yes! Let’s break it carefully.
 
-How it works:
+1️⃣ Round Robin Load Balancing
 
-LB sends requests to backend servers in order, looping back after the last server.
+Definition:
+Round Robin is a simple load balancing method where incoming requests are distributed evenly, one by one, to each server in the cluster in order.
 
-Example: 3 servers → requests go to 1 → 2 → 3 → 1 → 2 → 3…
+Example: Cluster of 3 Servers
 
-Pros:
+Let’s say we have 3 Node.js servers:
 
-Simple and easy to implement
+Server 1
+Server 2
+Server 3
 
-Works well if servers are roughly equal in capacity
 
-Cons:
+Incoming requests: R1, R2, R3, R4, R5, R6
 
-Doesn’t consider server load
+Round Robin Distribution:
 
-Can overload a slower server
+| Request | Server Assigned |
+| ------- | --------------- |
+| R1      | Server 1        |
+| R2      | Server 2        |
+| R3      | Server 3        |
+| R4      | Server 1        |
+| R5      | Server 2        |
+| R6      | Server 3        |
 
-Best use case: Stateless servers of similar capacity (like Node.js API pods serving /users).
+
+
+
+✅ As you can see, requests are assigned one by one, cycling through the servers.
+
+Key Points:
+
+Works evenly if servers have similar capacity.
+
+Does not consider server load — it just rotates.
+
+Simple to implement in Nginx, HAProxy, AWS ELB, etc.
+
+Quick Diagram
+Incoming Requests
+    |
+    v
+[Load Balancer - Round Robin]
+   |      |      |
+   v      v      v
+Server1 Server2 Server3
+
+
+✅ Interview Tip:
+
+“Round Robin sends requests one by one to servers in 
+order. If there are 3 servers, first request → Server 1,
+ second → Server 2, third → Server 3,
+  fourth → Server 1, and so on.”

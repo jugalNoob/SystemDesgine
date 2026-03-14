@@ -5,17 +5,22 @@
 Builder is a Creational Design Pattern used to construct complex
  objects step by step.
 
-Useful when an object has many optional fields or different configurations.
+Useful when an object has many optional fields or different 
+configurations.
 
-Separates construction logic from the final object representation.
+Separates construction logic from the
+ final object representation.
 
 . Use Case in LLD:
 
-BookMyShow → Build Movie with title, duration, showtimes, seats, etc.
+BookMyShow → Build Movie with title, duration,
+ showtimes, seats, etc.
 
-Library Management → Build Book with optional author, genre, publisher.
+Library Management → Build Book with optional
+author, genre, publisher.
 
-Complex configuration objects → like Car with color, engine, airbags, sunroof.
+Complex configuration objects → like Car with color
+, engine, airbags, sunroof.
 
 . Key Idea:
 

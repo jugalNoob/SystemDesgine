@@ -4,6 +4,7 @@ This is how real architects think.
 “If my users are only in India, do I still need CDN?”
 
 Short answer: Most of the time → YES.
+
 But let’s break it properly.
 
 🧠 1️⃣ When You MAY NOT Need CDN

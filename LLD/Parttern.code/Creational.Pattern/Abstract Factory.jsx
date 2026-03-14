@@ -1,11 +1,17 @@
-Abstract FactoryPerfect! Let’s explain Abstract Factory Pattern using a Food Delivery Payment example. I’ll go step by step, with code and LLD relevance.
+Abstract FactoryPerfect! Let’s explain Abstract Factory Pattern
+ using a Food Delivery Payment example. I’ll go step by step,
+  with code and LLD relevance.
+
 
 🔹 What is Abstract Factory?
 
 Definition:
-Abstract Factory is a Creational Design Pattern that provides an interface for creating families of related objects without specifying their concrete classes.
+Abstract Factory is a Creational Design Pattern that 
+provides an interface for creating families of related 
+objects without specifying their concrete classes.
 
-Useful when your system has multiple categories of objects and you want consistency across them.
+Useful when your system has multiple categories of objects and
+ you want consistency across them.
 
 Each “family” of objects belongs together (e.g., payment + receipt).
 
@@ -17,7 +23,9 @@ Each payment method might have related objects like Receipt, Transaction
 
 Key Idea:
 
-“Client code uses abstract factory → can switch families (Payment + Receipt) without changing client logic.”
+“Client code uses abstract factory → can switch families
+
+(Payment + Receipt) without changing client logic.”
 
 🔹 JavaScript Example: Food Delivery Payment
 // Step 1: Define abstract interfaces (can be just JS classes)

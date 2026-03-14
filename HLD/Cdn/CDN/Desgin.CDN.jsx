@@ -151,7 +151,7 @@ Layer	Responsibility
 | Redis      | High-speed cache                |
 | DB         | Durable storage                 |
 
-
+ 
 🚀 Production Enhancements
 
 You can extend:
